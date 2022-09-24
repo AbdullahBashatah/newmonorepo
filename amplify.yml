@@ -1,0 +1,36 @@
+version: 1
+applications:
+  - appRoot: newapp
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        files:
+            - '**/*'
+        discard-paths: yes
+        baseDirectory: build
+      cache:
+        paths:
+            - node_modules/**/*
+  - appRoot: angular-tour-of-heroes
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        files:
+            - '**/*'
+        discard-paths: yes
+        baseDirectory: build
+      cache:
+        paths:
+            - node_modules/**/*
